@@ -1,0 +1,103 @@
+@use "../scss/" as *;
+
+.banner {
+  position: relative;
+  height: 50vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include overlay();
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
+  }
+}
+
+.movie-content {
+  @include flex(flex-start, flex-start);
+  max-width: 1260px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  margin-top: -200px;
+  padding: 0 2rem;
+
+  &__poster {
+    flex: 1;
+
+    @include mobile {
+      display: none;
+    }
+
+    &__img {
+      padding-top: 165%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: $border-radius;
+    }
+  }
+
+  &__info {
+    width: 70%;
+    padding: 2rem 1.5rem;
+
+    @include mobile {
+      width: 100%;
+      padding-left: 0;
+    }
+
+    .genres {
+      padding: 2rem 0;
+
+      & > * ~ * {
+        border: 3px solid #fff;
+        border-radius: $border-radius;
+        margin-right: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        background-color: $body-bg;
+      }
+    }
+  }
+  .cast-title {
+    margin: 2rem 0;
+  }
+
+  &__casts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+    @include tablet {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .cast-item {
+      @include flex(center, center);
+      flex-direction: column;
+      text-align: center;
+      margin: 1rem;
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+  }
+}

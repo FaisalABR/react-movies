@@ -1,0 +1,7 @@
+@use "../scss/" as *;
+
+.section {
+  &__header {
+    @include flex(center, space-between);
+  }
+}
